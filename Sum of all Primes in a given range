@@ -1,0 +1,30 @@
+import java.lang.Math;
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int l = sc.nextInt();
+        int r = sc.nextInt();
+        
+        int [] a = new int[r+1];
+        
+        int sum = 0;
+        int sqrtn = (int)Math.sqrt(r);
+        
+        for(int i = 2; i <= sqrtn; i++) {
+            if(a[i] == 0) {
+                for(int j = i*2; j <= r; j+=i) {
+                    a[j] = 1;
+                }
+            }
+        }
+        
+        for(int i = l; i <= r; i++) {
+            if(a[i] == 0) {
+                sum+=i;
+            }
+        }
+        System.out.print(sum);
+    }
+}
